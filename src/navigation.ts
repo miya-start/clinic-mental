@@ -3,40 +3,57 @@ import { getPermalink, getBlogPermalink, getHomePermalink, getAsset } from './ut
 export const headerData = {
   links: [
     {
-      text: 'Home',
+      text: 'クリニック紹介',
       links: [
         {
-          text: 'SaaS',
-          href: getPermalink('/homes/saas'),
+          text: '院長ご挨拶',
+          href: getPermalink('/message'),
         },
         {
-          text: 'Startup',
-          href: getPermalink('/homes/startup'),
+          text: '担当医表・スタッフ紹介',
+          href: getPermalink('/staff'),
         },
         {
-          text: 'Mobile App',
-          href: getPermalink('/homes/mobile-app'),
-        },
-        {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
+          text: '院内写真案内',
+          href: getPermalink('/photos'),
         },
       ],
     },
     {
-      text: 'Services',
-      href: getPermalink('services'),
+      text: '初診の方へ',
+      href: getPermalink('/first-visit'),
     },
     {
-      text: 'Landing',
-      href: getPermalink('landing/lead-generation'),
+      text: '治療内容',
+      links: [
+        {
+          text: 'うつ病',
+          href: getPermalink('/depression'),
+        },
+        {
+          text: '不眠',
+          href: getPermalink('/insomnia'),
+        },
+        {
+          text: '不安障害',
+          href: getPermalink('/anxiety'),
+        },
+        {
+          text: '物忘れ(認知症)',
+          href: getPermalink('/dementia'),
+        },
+        {
+          text: '復職支援',
+          href: getPermalink('/reemployment'),
+        },
+      ],
     },
     {
-      text: 'Blog',
-      href: getBlogPermalink(),
+      text: 'カウンセリング',
+      href: getPermalink('/counseling'),
     },
     {
-      text: 'Widgets',
+      text: '問診票',
       href: '#',
     },
   ],
