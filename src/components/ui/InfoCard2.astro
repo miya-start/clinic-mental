@@ -1,0 +1,101 @@
+---
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+import type { InfoCard } from '~/types';
+import Button from './Button.astro';
+
+const { items = [], columns } = Astro.props as InfoCard;
+---
+
+{
+  items && (
+    <div
+      class={twMerge(
+        `grid gap-8 gap-x-12 sm:gap-y-8 ${
+          columns === 4
+            ? 'lg:grid-cols-4 md:grid-cols-3 grid-cols-2'
+            : columns === 3
+              ? 'lg:grid-cols-3 sm:grid-cols-2'
+              : columns === 2
+                ? 'sm:grid-cols-2 '
+                : ''
+        }`
+      )}
+    >
+      {items.map(({ title, description, image }) => (
+        <a href="#" class="medical-card bg-primary rounded-sm">
+          <span class="bg-accent1 portfolio__overlay absolute left-0 top-0 z-10 h-full w-full bg-white opacity-0 transition duration-300">
+            <div class="content">
+              <h4 class="font-bold underline underline-offset-4">当院の考え方</h4>
+            </div>
+          </span>
+          <img src={image.src} alt="" />
+          <p class="border-t-2 border-white">{title}</p>
+        </a>
+      ))}
+    </div>
+  )
+}
+
+<style>
+  .medical-card {
+    border: none;
+    position: relative;
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
+    transition: 0.5s;
+  }
+
+  .medical-card:hover .portfolio__overlay {
+    opacity: 0.7;
+  }
+
+  .medical-card p {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .medical-card .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+  }
+
+  .medical-card .content h4 {
+    position: relative;
+    color: #000000;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    z-index: 20;
+  }
+
+  .medical-card .content h4::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: -10px;
+    height: 5px;
+    width: 80%;
+    background: linear-gradient(90deg, var(--primary), var(--primary), transparent);
+  }
+
+  .medical-card:hover .content,
+  .medical-card:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+</style>

@@ -12,19 +12,22 @@ const {
 const {
   container: containerClass = 'max-w-3xl',
   title: titleClass = 'text-3xl md:text-4xl ',
-  subtitle: subtitleClass = 'text-xl',
+  subtitle: subtitleClass = 'text-lg md:text-xl',
 } = classes;
 ---
 
 {
   (title || subtitle || tagline) && (
-    <div class={twMerge('palt mb-8 text-center font-serif md:mx-auto md:mb-12', containerClass)}>
-      {title && <h2 class={twMerge('font-bold text-3xl', titleClass)} set:html={title} />}
+    <div class={twMerge('palt mb-8 text-center md:mx-auto md:mb-12', containerClass)}>
+      {title && <h2 class={twMerge('font-bold text-3xl font-serif', titleClass)} set:html={title} />}
       {tagline && (
-        <p class="text-base font-bold uppercase tracking-wide text-secondary dark:text-blue-200" set:html={tagline} />
+        <p
+          class="font-serif text-base font-bold uppercase tracking-wide text-secondary dark:text-blue-200"
+          set:html={tagline}
+        />
       )}
 
-      {subtitle && <p class={twMerge('mt-4 text-muted', subtitleClass)} set:html={subtitle} />}
+      {subtitle && <p class={twMerge('mt-4 break-keep', subtitleClass)} set:html={subtitle} />}
     </div>
   )
 }
