@@ -1,3 +1,4 @@
+import type { GetImageResult } from 'astro';
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
 
@@ -127,6 +128,12 @@ export interface Stat {
   icon?: string;
 }
 
+export interface Info {
+  title: string;
+  description: string;
+  image: GetImageResult;
+}
+
 export interface Item {
   title?: string;
   description?: string;
@@ -181,6 +188,11 @@ export interface CallToAction extends HTMLAttributes<a> {
   icon?: string;
   classes?: Record<string, string>;
   type?: 'button' | 'submit' | 'reset';
+}
+
+export interface InfoCard {
+  items?: Array<Info>;
+  columns?: number;
 }
 
 export interface ItemGrid {

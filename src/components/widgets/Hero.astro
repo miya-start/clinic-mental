@@ -53,7 +53,15 @@ const optimizedBackground = await getImage({
           )
         }
         <div class="mx-auto max-w-3xl text-left md:text-center">
-          {subtitle && <p class="mb-6 text-xl" style="text-shadow: 0 0 5px #fff, 0 0 10px #fff;" set:html={subtitle} />}
+          {
+            subtitle && (
+              <p
+                class="mb-6 text-xl"
+                style="text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;"
+                set:html={subtitle}
+              />
+            )
+          }
         </div>
         {content && <Fragment set:html={content} />}
       </div>

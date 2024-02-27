@@ -1,6 +1,10 @@
 ---
+import { getImage } from 'astro:assets';
+import policy1Image from '~/assets/images/policy-1.jpg';
+import policy2Image from '~/assets/images/policy-2.jpg';
+import policy3Image from '~/assets/images/policy-3.jpg';
+import policy4Image from '~/assets/images/policy-4.jpg';
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -20,6 +24,11 @@ const metadata = {
 };
 
 const t = getTranslation(contents, getLocaleKey(Astro.currentLocale));
+
+const policy1 = await getImage({ src: policy1Image, formats: 'webp' });
+const policy2 = await getImage({ src: policy2Image, formats: 'webp' });
+const policy3 = await getImage({ src: policy3Image, formats: 'webp' });
+const policy4 = await getImage({ src: policy4Image, formats: 'webp' });
 ---
 
 <Layout metadata={metadata}>
@@ -41,45 +50,32 @@ const t = getTranslation(contents, getLocaleKey(Astro.currentLocale));
 
   <Features
     id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
+    tagline="Medical Policy"
+    title="当院の特徴"
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: '悩みや苦しみを「わかる」',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          '私たちは、患者さんの悩みや苦しみを深く理解することを治療の出発点としています。痛みや不安を「わかる」ことで、信頼関係を築き、治療への道を開くことができます。患者さん一人ひとりの感情に寄り添い、その声に耳を傾けることで、最適な治療法を見つけ出すことが可能になります。',
+        image: policy1,
       },
       {
-        title: 'Ready-to-use Components',
+        title: '専門職員によるチーム医療',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          '多様な病院や組織で豊富な経験を積んだ専門職員がチームを組み、患者さん一人ひとりに合わせた治療にあたります。医師、臨床心理士、看護師など、多職種が協力し合い、それぞれの専門知識と経験を活かして、最良の治療計画を立案します。',
+        image: policy2,
       },
       {
-        title: 'Best Practices',
+        title: '生活全体を改善へ',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+          '患者さんの生活全体に焦点を当て、一人ひとりに最適なサポートを提供することで、より良い健康状態へと導きます。治療は、患者さん自身の生活習慣や環境を改善することも含まれ、病気の治療だけでなく、生活の質の向上も目指します。',
+        image: policy3,
       },
       {
-        title: 'Excellent Page Speed',
+        title: '家族と共に歩む',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          '私たちの治療プロセスは、患者さんとそのご家族との密接な共同作業です。この協働のアプローチは、治療への理解と納得を深め、より良い治療結果へとつながります。また、患者さんが日常生活で直面する課題を乗り越える手助けとなります。',
+        image: policy4,
       },
     ]}
   />

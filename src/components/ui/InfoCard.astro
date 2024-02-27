@@ -1,0 +1,44 @@
+---
+import { twMerge } from 'tailwind-merge';
+import type { InfoCard } from '~/types';
+
+const { items = [], columns } = Astro.props as InfoCard;
+---
+
+{
+  items && (
+    <div
+      class={twMerge(
+        `grid mx-auto gap-8 md:gap-y-12 ${
+          columns === 4
+            ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
+            : columns === 3
+              ? 'lg:grid-cols-3 sm:grid-cols-2'
+              : columns === 2
+                ? 'sm:grid-cols-2 '
+                : ''
+        }`
+      )}
+    >
+      {items.map(({ description, title, image }) => (
+        <div class="shadow-[0_0_50px_0_rgba(196,206,213,0.2)] transition duration-500 hover:shadow-[0_0_100px_0_rgba(196,206,213,0.7)] dark:shadow-[0_0_20px_0_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_50px_0_rgba(0,0,0,0.2)]">
+          <a class="block" href="#">
+            <div class="overflow-hidden">
+              <span class="block">
+                <img class="w-full transition duration-300" src={image?.src} alt="" />
+              </span>
+            </div>
+            <div class="p-[30px]">
+              <div>
+                <h3 class="palt font-serif text-[25px] font-bold leading-7">
+                  <span class="text-primary transition-all duration-300 dark:text-white">{title}</span>
+                </h3>
+                <p class="mt-[15px] text-[17px] dark:text-slate-200">{description}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+  )
+}
