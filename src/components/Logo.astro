@@ -1,7 +1,12 @@
 ---
+import logoImage from '~/assets/images/logo.png';
+import Image from '~/components/common/Image.astro';
 import { SITE } from '~/utils/config';
 ---
 
-<span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
-  🚀 {SITE?.name}
+<span
+  class="palt flex items-center gap-2 whitespace-nowrap font-serif text-4xl font-bold text-primary dark:text-white rtl:ml-0 rtl:mr-2"
+>
+  <Image src={logoImage} alt={SITE?.name} width={74} />
+  {SITE?.name}
 </span>

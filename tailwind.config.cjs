@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: emerald[500],
+        primary: emerald[600],
         secondary: 'var(--aw-color-secondary)',
         accent: red[500],
         default: 'var(--aw-color-text-default)',
@@ -14,7 +14,15 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--aw-font-sans)', ...defaultTheme.fontFamily.sans],
-        serif: ['var(--aw-font-serif)', ...defaultTheme.fontFamily.serif],
+        serif: [
+          'Times New Roman',
+          'Yu Mincho',
+          'YuMincho',
+          'Hiragino Mincho ProN',
+          'Meiryo',
+          'serif',
+          ...defaultTheme.fontFamily.serif,
+        ],
         heading: ['var(--aw-font-heading)', ...defaultTheme.fontFamily.sans],
       },
     },

@@ -114,12 +114,10 @@ const locale = Astro.currentLocale as LocaleKey;
     ]}
   >
     <nav
-      class="hidden w-full items-center overflow-y-auto overflow-x-hidden text-default md:mx-5 md:flex md:w-auto md:overflow-x-auto md:overflow-y-visible"
+      class="palt hidden w-full items-center overflow-y-auto overflow-x-hidden font-serif text-default md:mx-5 md:flex md:w-auto md:overflow-x-auto md:overflow-y-visible"
       aria-label="Main navigation"
     >
-      <ul
-        class="flex w-full flex-col text-xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:text-lg"
-      >
+      <ul class="flex w-full flex-col text-xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center">
         {
           links.map(({ text, href, links }) => (
             <li class={links?.length ? 'dropdown' : ''}>
