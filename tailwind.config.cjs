@@ -1,13 +1,14 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+import { emerald, red } from 'tailwindcss/colors';
 
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       colors: {
-        primary: 'var(--aw-color-primary)',
+        primary: emerald[500],
         secondary: 'var(--aw-color-secondary)',
-        accent: 'var(--aw-color-accent)',
+        accent: red[500],
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
       },
