@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         primary: emerald[600],
         secondary: 'var(--aw-color-secondary)',
+        tertiary: 'var(--aw-color-tertiary)',
         accent: red[500],
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',

@@ -2,14 +2,10 @@
 import { Icon } from 'astro-icon/components';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import Logo from '~/components/Logo.astro';
-import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
-import Button from '~/components/ui/Button.astro';
-
-import { getHomePermalink } from '~/utils/permalinks';
-import { trimSlash, getAsset } from '~/utils/permalinks';
-import type { CallToAction } from '~/types';
 import type { LocaleKey } from '~/i18n';
+import { getHomePermalink } from '~/utils/permalinks';
+import { trimSlash } from '~/utils/permalinks';
 
 interface Link {
   text?: string;
@@ -18,8 +14,6 @@ interface Link {
   icon?: string;
 }
 
-interface ActionLink extends CallToAction {}
-
 interface MenuLink extends Link {
   links?: Array<MenuLink>;
 }
@@ -27,24 +21,18 @@ interface MenuLink extends Link {
 export interface Props {
   id?: string;
   links?: Array<MenuLink>;
-  actions?: Array<ActionLink>;
   isSticky?: boolean;
   isDark?: boolean;
   isFullWidth?: boolean;
-  showToggleTheme?: boolean;
-  showRssFeed?: boolean;
   position?: string;
 }
 
 const {
   id = 'header',
   links = [],
-  actions = [],
   isSticky = false,
   isDark = false,
   isFullWidth = false,
-  showToggleTheme = false,
-  showRssFeed = false,
   position = 'center',
 } = Astro.props;
 
@@ -75,32 +63,31 @@ const locale = Astro.currentLocale as LocaleKey;
         'fixed bottom-0 left-0 hidden w-full items-center justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 rtl:left-auto rtl:right-0',
       ]}
     >
-      <div class="flex w-full items-center justify-between md:w-auto">
-        <div class="flex">
-          {showToggleTheme && <ToggleTheme iconClass="size-8 md:size-7 md:inline-block" />}
-          {
-            showRssFeed && (
-              <a
-                class="inline-flex items-center rounded-lg p-2.5 text-sm text-muted hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200"
-                aria-label="RSS Feed"
-                href={getAsset('/rss.xml')}
-              >
-                <Icon name="tabler:rss" class="size-8" />
-              </a>
-            )
-          }
+      <div class="palt flex w-full items-center justify-end font-serif text-xl md:w-auto md:justify-between">
+        <a href="#" class="group mr-6 hidden bg-tertiary p-2 transition-colors hover:bg-yellow-700 md:block">
+          <div
+            class="rounded-sm border border-white bg-tertiary p-4 text-center text-white transition-colors group-hover:bg-yellow-700"
+          >
+            <div>
+              <Icon name="mdi:google-maps" class="-mr-1 mb-1 inline size-6" />
+              交通案内
+            </div>
+            <div>＊＊駅徒歩１分</div>
+          </div>
+        </a>
+        <div class="text-center text-2xl text-yellow-900 md:text-4xl">
+          <div class="border-b-2 border-yellow-900 pb-1">
+            <Icon name="mdi:phone" class="-mr-2 mb-1 inline size-8 rotate-12" />
+            000-000-0000
+          </div>
+          <a
+            href="#"
+            class="block border-b-2 border-yellow-900 py-1 transition-colors hover:border-yellow-700 hover:text-yellow-700"
+          >
+            <Icon name="mdi:monitor-cellphone" class="-mr-1 mb-1 inline size-8" />
+            Web予約
+          </a>
         </div>
-        {
-          actions?.length ? (
-            <span class="ml-4 rtl:ml-0 rtl:mr-4">
-              {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 w-auto px-5 py-2.5 text-sm font-semibold shadow-none md:px-6" />
-              ))}
-            </span>
-          ) : (
-            ''
-          )
-        }
       </div>
     </div>
   </div>

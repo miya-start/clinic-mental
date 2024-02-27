@@ -17,6 +17,10 @@ export const headerData = {
           text: '院内写真案内',
           href: getPermalink('/photos'),
         },
+        {
+          text: 'アクセス',
+          href: getPermalink('/access'),
+        },
       ],
     },
     {
