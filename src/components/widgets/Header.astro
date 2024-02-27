@@ -40,6 +40,50 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 const locale = Astro.currentLocale as LocaleKey;
 ---
 
+<div class="sticky top-0 z-40 flex w-full items-center justify-between bg-white px-3 py-1 md:relative md:px-6 md:py-3">
+  <a href={getHomePermalink()}>
+    <Logo />
+  </a>
+
+  <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'md:hidden']}>
+    <ToggleMenu />
+  </div>
+
+  <div
+    class:list={[
+      { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
+      'fixed bottom-0 left-0 hidden w-full items-center justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 rtl:left-auto rtl:right-0',
+    ]}
+  >
+    <div class="palt flex w-full items-center justify-end font-serif text-xl md:w-auto md:justify-between">
+      <a href="#" class="group mr-6 hidden bg-tertiary p-2 transition-colors hover:bg-yellow-700 md:block">
+        <div
+          class="rounded-sm border border-white bg-tertiary p-4 text-center text-white transition-colors group-hover:bg-yellow-700"
+        >
+          <div>
+            <Icon name="mdi:google-maps" class="-mr-1 mb-1 inline size-6" />
+            交通案内
+          </div>
+          <div>＊＊駅徒歩１分</div>
+        </div>
+      </a>
+      <div class="text-center text-2xl text-yellow-900 md:text-4xl">
+        <div class="border-b-2 border-yellow-900 pb-1">
+          <Icon name="mdi:phone" class="-mr-2 mb-1 inline size-8 rotate-12" />
+          000-000-0000
+        </div>
+        <a
+          href="#"
+          class="block border-b-2 border-yellow-900 py-1 transition-colors hover:border-yellow-700 hover:text-yellow-700"
+        >
+          <Icon name="mdi:monitor-cellphone" class="-mr-1 mb-1 inline size-8" />
+          Web予約
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
@@ -48,53 +92,12 @@ const locale = Astro.currentLocale as LocaleKey;
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
 >
-  <div class="flex w-full items-center justify-between p-3 md:px-6">
-    <a href={getHomePermalink()}>
-      <Logo />
-    </a>
-
-    <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'md:hidden']}>
-      <ToggleMenu />
-    </div>
-
-    <div
-      class:list={[
-        { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
-        'fixed bottom-0 left-0 hidden w-full items-center justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 rtl:left-auto rtl:right-0',
-      ]}
-    >
-      <div class="palt flex w-full items-center justify-end font-serif text-xl md:w-auto md:justify-between">
-        <a href="#" class="group mr-6 hidden bg-tertiary p-2 transition-colors hover:bg-yellow-700 md:block">
-          <div
-            class="rounded-sm border border-white bg-tertiary p-4 text-center text-white transition-colors group-hover:bg-yellow-700"
-          >
-            <div>
-              <Icon name="mdi:google-maps" class="-mr-1 mb-1 inline size-6" />
-              交通案内
-            </div>
-            <div>＊＊駅徒歩１分</div>
-          </div>
-        </a>
-        <div class="text-center text-2xl text-yellow-900 md:text-4xl">
-          <div class="border-b-2 border-yellow-900 pb-1">
-            <Icon name="mdi:phone" class="-mr-2 mb-1 inline size-8 rotate-12" />
-            000-000-0000
-          </div>
-          <a
-            href="#"
-            class="block border-b-2 border-yellow-900 py-1 transition-colors hover:border-yellow-700 hover:text-yellow-700"
-          >
-            <Icon name="mdi:monitor-cellphone" class="-mr-1 mb-1 inline size-8" />
-            Web予約
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="absolute inset-0"></div>
 
   <div
+    class=""
     class:list={[
-      'relative text-default p-3 md:px-6 mx-auto w-full md:flex md:justify-center',
+      'relative mx-auto w-full p-3 text-default md:flex md:justify-center',
       {
         'max-w-7xl': !isFullWidth,
       },
