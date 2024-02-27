@@ -56,7 +56,7 @@ const locale = Astro.currentLocale as LocaleKey;
     ]}
   >
     <div class="palt flex w-full items-center justify-end font-serif text-xl md:w-auto md:justify-between">
-      <a href="#" class="group mr-6 hidden bg-tertiary p-2 transition-colors hover:bg-yellow-700 md:block">
+      <a href="#" class="group mr-6 bg-tertiary p-2 transition-colors hover:bg-yellow-700 md:block">
         <div
           class="rounded-sm border border-white bg-tertiary p-4 text-center text-white transition-colors group-hover:bg-yellow-700"
         >
@@ -87,7 +87,7 @@ const locale = Astro.currentLocale as LocaleKey;
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 mx-auto w-full flex-none border-b border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-16 z-40 mx-auto w-full flex-none border-b border-gray-50/0 transition-[opacity] ease-in-out md:top-0',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
@@ -97,7 +97,7 @@ const locale = Astro.currentLocale as LocaleKey;
   <div
     class=""
     class:list={[
-      'relative mx-auto w-full p-3 text-default md:flex md:justify-center',
+      'relative mx-auto w-full text-default md:flex md:justify-center md:p-3',
       {
         'max-w-7xl': !isFullWidth,
       },
@@ -145,6 +145,20 @@ const locale = Astro.currentLocale as LocaleKey;
           ))
         }
       </ul>
+
+      <div class="fixed bottom-3 right-3 mt-6 bg-white/50 text-center text-2xl text-yellow-900 md:hidden md:text-4xl">
+        <div class="border-b-2 border-yellow-900 pb-1">
+          <Icon name="mdi:phone" class="-mr-2 mb-1 inline size-8 rotate-12" />
+          000-000-0000
+        </div>
+        <a
+          href="#"
+          class="block border-b-2 border-yellow-900 py-1 transition-colors hover:border-yellow-700 hover:text-yellow-700"
+        >
+          <Icon name="mdi:monitor-cellphone" class="-mr-1 mb-1 inline size-8" />
+          Web予約
+        </a>
+      </div>
     </nav>
   </div>
 </header>

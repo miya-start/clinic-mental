@@ -1,9 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
 import backgroundImage from '~/assets/images/hero-bg.jpg';
-import Image from '~/components/common/Image.astro';
-import Button from '~/components/ui/Button.astro';
-import type { CallToAction } from '~/types';
 
 export interface Props {
   id?: string;
@@ -11,8 +8,6 @@ export interface Props {
   subtitle?: string;
   tagline?: string;
   content?: string;
-  actions?: string | CallToAction[];
-  image?: string | any; // TODO: find HTMLElementProps
 }
 
 const {
@@ -21,8 +16,6 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
   content = await Astro.slots.render('content'),
-  actions = await Astro.slots.render('actions'),
-  image = await Astro.slots.render('image'),
 } = Astro.props;
 
 const optimizedBackground = await getImage({
@@ -33,7 +26,7 @@ const optimizedBackground = await getImage({
 
 <section class="not-prose relative" {...id ? { id } : {}}>
   <div
-    class="pointer-events-none absolute inset-0"
+    class="pointer-events-none absolute inset-0 bg-cover bg-center after:absolute after:inset-0 after:bg-white/10 after:bg-cover after:bg-center"
     style=`background-image: url(${optimizedBackground.src}) ;`
     aria-hidden="true"
   >
@@ -53,51 +46,16 @@ const optimizedBackground = await getImage({
         {
           title && (
             <h1
-              class="palt mb-4 font-heading text-5xl font-bold tracking-tighter dark:text-gray-200 md:text-6xl"
+              class="palt mb-4 font-serif text-5xl font-bold tracking-tighter dark:text-gray-200 md:text-6xl"
+              style="text-shadow: 0 0 10px #fff, 0 0 20px #fff;"
               set:html={title}
             />
           )
         }
-        <div class="mx-auto max-w-3xl">
-          {subtitle && <p class="mb-6 text-xl text-muted dark:text-slate-300" set:html={subtitle} />}
-          {
-            actions && (
-              <div class="m-auto flex max-w-xs flex-col flex-nowrap gap-4 sm:max-w-md sm:flex-row sm:justify-center">
-                {Array.isArray(actions) ? (
-                  actions.map((action) => (
-                    <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} class="w-full sm:mb-0" />
-                    </div>
-                  ))
-                ) : (
-                  <Fragment set:html={actions} />
-                )}
-              </div>
-            )
-          }
+        <div class="mx-auto max-w-3xl text-left md:text-center">
+          {subtitle && <p class="mb-6 text-xl" style="text-shadow: 0 0 5px #fff, 0 0 10px #fff;" set:html={subtitle} />}
         </div>
         {content && <Fragment set:html={content} />}
-      </div>
-      <div>
-        {
-          image && (
-            <div class="relative m-auto max-w-5xl">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
-                <Image
-                  class="mx-auto w-full rounded-md"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  width={1024}
-                  height={576}
-                  {...image}
-                />
-              )}
-            </div>
-          )
-        }
       </div>
     </div>
   </div>
