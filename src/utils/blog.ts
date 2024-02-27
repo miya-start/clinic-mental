@@ -201,9 +201,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
 
   const posts = await fetchPosts();
   const categories = new Set<string>();
-  posts.map((post) => {
-    typeof post.category === 'string' && categories.add(post.category.toLowerCase());
-  });
+  posts.map((post) => typeof post.category === 'string' && categories.add(post.category.toLowerCase()));
 
   return Array.from(categories).flatMap((category) =>
     paginate(
@@ -223,9 +221,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 
   const posts = await fetchPosts();
   const tags = new Set<string>();
-  posts.map((post) => {
-    Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
-  });
+  posts.map((post) => Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase())));
 
   return Array.from(tags).flatMap((tag) =>
     paginate(

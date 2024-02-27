@@ -70,7 +70,7 @@ const parseAspectRatio = (aspectRatio: number | string | null | undefined): numb
 
     if (match) {
       const [, num, den] = match.map(Number);
-      if (den && !isNaN(num)) return num / den;
+      if (den && !Number.isNaN(num)) return num / den;
     } else {
       const numericValue = parseFloat(aspectRatio);
       if (!isNaN(numericValue)) return numericValue;
