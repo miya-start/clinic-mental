@@ -21,10 +21,7 @@ const {
     <div class={twMerge('palt mb-8 text-center md:mx-auto md:mb-12', containerClass)}>
       {title && <h2 class={twMerge('font-bold text-3xl font-serif', titleClass)} set:html={title} />}
       {tagline && (
-        <p
-          class="font-serif text-base font-bold uppercase tracking-wide text-secondary dark:text-blue-200"
-          set:html={tagline}
-        />
+        <p class="font-serif text-base font-bold uppercase tracking-wide text-secondary" set:html={tagline} />
       )}
 
       {subtitle && <p class={twMerge('mt-4 break-keep', subtitleClass)} set:html={subtitle} />}
